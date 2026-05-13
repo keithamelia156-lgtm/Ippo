@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ModMenu UI Example</title>
+    <link rel="stylesheet" href="modmenu.css">
+</head>
+<body style="background-color: #0a0e27; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">
+    <div style="color: white; text-align: center; padding: 40px;">
+        <h1>🎮 ModMenu UI Example</h1>
+        <p>Press <kbd>Alt + M</kbd> to toggle the menu</p>
+    </div>
+
+    <script src="modmenu.js"></script>
+    <script>
+        // Initialize ModMenu
+        const menu = new ModMenuUI({
+            title: 'BAR HUB MODMENU',
+            defaultPage: 'main'
+        });
+
+        // Add pages
+        menu.addPage('main', '🏠 Home');
+        menu.addPage('duplicator', '📋 Duplicator');
+        menu.addPage('settings', '⚙️ Settings');
+
+        // Main Page Elements
+        menu.addButton('test-btn', '🎮 Test Button', () => {
+            menu.showNotification('Success', 'Button clicked!', 3, 'success');
+            console.log('Test button pressed');
+        }, { page: 'main' });
+
+        menu.addToggle('enable-feature', '✨ Enable Feature', false, (state) => {
+            console.log('Feature enabled:', state);
+            menu.showNotification('Toggle', `Feature is now ${state ? 'ON' : 'OFF'}`);
+        }, { page: 'main' });
+
+        menu.addButton('info-btn', 'ℹ️ Show Info', () => {
+            menu.showNotification('Info', 'This is an example ModMenu UI!', 3);
+        }, { page: 'main' });
+
+        // Duplicator Page Elements
+        menu.addButton('duplicate-item', '📋 Duplicate Item', () => {
+            menu.showNotification('Duplicated', 'Item successfully duplicated!', 2, 'success');
+        }, { page: 'duplicator' });
+
+        menu.addSlider('duplicate-count', 'How many copies?', 1, 10, 3, (value) => {
+            console.log('Duplicate count set to:', value);
+        }, { page: 'duplicator' });
+
+        menu.addDropdown('item-type', 'Select Item Type', 
+            ['Weapon', 'Armor', 'Accessory', 'Consumable'], 
+            'Weapon', 
+            (value) => {
+                console.log('Selected item type:', value);
+            }, 
+            { page: 'duplicator' }
+        );
+
+        menu.addTextInput('item-name', 'Item Name', 'Enter item name...', (value) => {
+            console.log('Item name:', value);
+        }, { page: 'duplicator' });
+
+        menu.addButton('clear-duplicates', '🗑️ Clear Duplicates', () => {
+            menu.showNotification('Cleared', 'All duplicates have been cleared!', 2, 'danger');
+        }, { page: 'duplicator' });
+
+        // Settings Page Elements
+        menu.addToggle('dark-mode', '🌙 Dark Mode', true, (state) => {
+            console.log('Dark mode:', state);
+            menu.showNotification('Settings', `Dark mode ${state ? 'enabled' : 'disabled'}`);
+        }, { page: 'settings' });
+
+        menu.addSlider('ui-scale', 'UI Scale', 0.8, 1.5, 1, (value) => {
+            console.log('UI scale:', value);
+        }, { page: 'settings' });
+
+        menu.addDropdown('theme', 'Theme', 
+            ['Dark', 'Light', 'Auto'], 
+            'Dark', 
+            (value) => {
+                console.log('Theme set to:', value);
+            }, 
+            { page: 'settings' }
+        );
+
+        menu.addButton('reset-settings', '🔄 Reset Settings', () => {
+            menu.showNotification('Reset', 'Settings have been reset to default!', 2, 'warning');
+        }, { page: 'settings' });
+
+        console.log('[ModMenuUI] Example initialized. Press Alt+M to open the menu.');
+    </script>
+</body>
+</html>
