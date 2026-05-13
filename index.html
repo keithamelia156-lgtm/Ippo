@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BAR HUB - Duplicator System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <h1>🍺 BAR HUB</h1>
+            <p>Duplicator System</p>
+        </header>
+
+        <div class="inventory-section">
+            <h2>📦 Inventory</h2>
+            <div id="inventoryList" class="inventory-list">
+                <!-- Items will be populated here -->
+            </div>
+        </div>
+
+        <div class="controls-section">
+            <h2>⚙️ Controls</h2>
+            <div class="control-buttons">
+                <button id="refreshBtn" class="btn btn-primary">🔄 Refresh</button>
+                <button id="duplicateBtn" class="btn btn-success">📋 Duplicate Selected</button>
+                <button id="clearBtn" class="btn btn-danger">🗑️ Clear All</button>
+            </div>
+        </div>
+
+        <div class="stats-section">
+            <h2>📊 Stats</h2>
+            <div class="stats-display">
+                <div class="stat">
+                    <span class="stat-label">Total Items:</span>
+                    <span id="totalItems" class="stat-value">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Total Duplicates:</span>
+                    <span id="totalDuplicates" class="stat-value">0</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
